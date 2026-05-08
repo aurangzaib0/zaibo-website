@@ -1,193 +1,936 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zaibo's Portfolio</title>
-  <style>
-    /* --- General Styles --- */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurang Zaib | VIP Portfolio</title>
 
-    header {
-      background: #4CAF50;
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
-    }
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
+    <!-- ICONS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    nav {
-      background: #333;
-      padding: 10px;
-      text-align: center;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    nav a:hover {
-      color: #4CAF50;
-    }
+        body {
+            background: #0f172a;
+            color: white;
+            overflow-x: hidden;
+        }
 
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+        /* =========================
+           ANIMATED BACKGROUND
+        ========================== */
 
-    h2 {
-      color: #4CAF50;
-      margin-bottom: 15px;
-    }
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 255, 255, 0.12);
+            animation: float 18s linear infinite;
+        }
 
-    ul li {
-      background: #eee;
-      margin: 5px 0;
-      padding: 10px;
-      border-radius: 5px;
-    }
+        .bubble:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            left: -100px;
+            top: 100px;
+        }
 
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
+        .bubble:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            right: 50px;
+            top: 250px;
+        }
 
-    /* --- Button Style --- */
-    .btn {
-      display: inline-block;
-      background: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
+        .bubble:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            left: 40%;
+            bottom: 50px;
+        }
 
-    .btn:hover {
-      background: #45a049;
-    }
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
 
-    /* --- Contact Form --- */
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+            }
 
-    form button {
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 12px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+            100% {
+                transform: translateY(0px) rotate(360deg);
+            }
+        }
 
-    form button:hover {
-      background: #45a049;
-    }
+        /* =========================
+           NAVBAR
+        ========================== */
 
-  </style>
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: cyan;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: cyan;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .profile {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid cyan;
+            box-shadow: 0 0 35px cyan;
+            margin-bottom: 25px;
+            transition: 0.4s;
+        }
+
+        .profile:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 65px;
+        }
+
+        .hero span {
+            color: cyan;
+        }
+
+        #typing {
+            font-size: 30px;
+            margin-top: 10px;
+            color: #94a3b8;
+        }
+
+        .hero p {
+            max-width: 850px;
+            margin-top: 20px;
+            line-height: 1.8;
+            color: #d1d5db;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================== */
+
+        .buttons {
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            margin: 10px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, cyan, #2563eb);
+            transition: 0.4s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px cyan;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 50px;
+            color: cyan;
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            line-height: 1.9;
+            font-size: 17px;
+            color: #d1d5db;
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        /* =========================
+   VIP SKILLS SECTION
+========================= */
+
+.skills-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:25px;
+}
+
+.skill-card{
+    background:rgba(255,255,255,0.05);
+    border-radius:25px;
+    padding:30px 20px;
+    text-align:center;
+    transition:0.4s;
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+}
+
+.skill-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(0,255,255,0.25);
+}
+
+.skill-card i{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+/* Different icon colors */
+
+.fa-html5{
+    color:#f97316;
+}
+
+.fa-css3-alt{
+    color:#3b82f6;
+}
+
+.fa-js{
+    color:#facc15;
+}
+
+.fa-python{
+    color:#38bdf8;
+}
+
+.fa-java{
+    color:#f97316;
+}
+
+.fa-github{
+    color:white;
+}
+
+.fa-android{
+    color:#22c55e;
+}
+
+.fa-database{
+    color:#06b6d4;
+}
+
+.fa-microchip{
+    color:#a855f7;
+}
+
+.fa-network-wired{
+    color:#10b981;
+}
+
+.fa-palette{
+    color:#ec4899;
+}
+
+.skill-card span{
+    display:block;
+    font-size:18px;
+    font-weight:600;
+}
+        /* =========================
+           PROJECTS
+        ========================== */
+
+      /* =========================
+   VIP PROJECT SECTION
+========================= */
+
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+
+.project-card{
+    background:rgba(255,255,255,0.05);
+    border-radius:25px;
+    overflow:hidden;
+    transition:0.4s;
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.project-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 0 35px rgba(0,255,255,0.25);
+}
+
+.project-image{
+    height:180px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:70px;
+    color:white;
+}
+
+/* Different backgrounds */
+
+.project1{
+    background:linear-gradient(45deg,#06b6d4,#2563eb);
+}
+
+.project2{
+    background:linear-gradient(45deg,#f59e0b,#ea580c);
+}
+
+.project3{
+    background:linear-gradient(45deg,#9333ea,#6366f1);
+}
+
+.project4{
+    background:linear-gradient(45deg,#10b981,#059669);
+}
+
+.project5{
+    background:linear-gradient(45deg,#ef4444,#f43f5e);
+}
+
+.project-content{
+    padding:25px;
+}
+
+.project-content h3{
+    font-size:24px;
+    margin-bottom:15px;
+    color:cyan;
+}
+
+.project-content p{
+    line-height:1.8;
+    color:#d1d5db;
+}
+
+.project-content a{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 22px;
+    border-radius:30px;
+    background:linear-gradient(45deg,cyan,#2563eb);
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.project-content a:hover{
+    transform:scale(1.05);
+}
+       /* =========================
+   VIP GALLERY
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.gallery-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:25px;
+    padding:7px;
+    background:linear-gradient(45deg,cyan,#2563eb,#9333ea);
+    transition:0.4s;
+}
+
+.gallery-card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 0 30px rgba(0,255,255,0.4);
+}
+
+.gallery-card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    border-radius:20px;
+    display:block;
+}
+
+.gallery-text{
+    position:absolute;
+    bottom:15px;
+    left:15px;
+    background:rgba(0,0,0,0.65);
+    padding:8px 15px;
+    border-radius:10px;
+    color:white;
+    font-size:14px;
+    backdrop-filter:blur(5px);
+}
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            margin: 18px 0;
+            font-size: 18px;
+            color: #d1d5db;
+        }
+
+        .contact i {
+            color: cyan;
+            margin-right: 10px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #94a3b8;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media(max-width:768px) {
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            #typing {
+                font-size: 22px;
+            }
+
+            .profile {
+                width: 150px;
+                height: 150px;
+            }
+
+            .section-title {
+                font-size: 34px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Hi, I'm Zaibo Baloch</h1>
-    <p>Computer Science Student | Web Developer Learner</p>
-    <a href="#contact" class="btn">Contact Me</a>
-  </header>
+    <!-- BACKGROUND -->
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <div class="background">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hello! I'm a BSCS student passionate about programming, problem-solving, 
-      and exploring new technologies. I love building simple projects 
-      to practice my coding and improve my skills.
-    </p>
-  </section>
+    <!-- NAVBAR -->
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>My Skills</h2>
-    <ul>
-      <li>C++ Programming</li>
-      <li>Data Structures & Algorithms</li>
-      <li>Database (MySQL)</li>
-      <li>Web Development (HTML, CSS, JavaScript)</li>
-    </ul>
-  </section>
+    <nav>
+        <div class="logo">Aurang Zaib</div>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <p>Here are some projects I’m working on:</p>
-    <ul>
-      <li>Student Management System (C++)</li>
-      <li>Simple Calculator (JavaScript)</li>
-      <li>My Portfolio Website</li>
-    </ul>
-  </section>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form id="contactForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <p id="response" style="color:green; font-weight:bold; margin-top:10px;"></p>
-  </section>
+    <!-- HERO -->
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Zaibo Baloch | All Rights Reserved</p>
-  </footer>
+    <section class="hero" id="home">
 
-  <!-- JavaScript -->
-  <script>
-    // Contact form action (simple)
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault(); // Stop page reload
-      document.getElementById("response").innerText = "✅ Thanks, your message has been sent!";
-      this.reset(); // Clear form
-    });
-  </script>
+        <img src="za1.jpeg" class="profile">
+
+        <h1>Hi, I'm <span>Aurang Zaib</span></h1>
+
+        <h2 id="typing"></h2>
+
+        <p>
+            BSCS 4th Semester student at Green International University Lahore.
+            Frontend Developer passionate about web development, robotics,
+            Android applications, networking and creative real-world projects.
+        </p>
+
+        <div class="buttons">
+
+            <a href="https://github.com/aurangzaib0/zaibo-website"
+                target="_blank" class="btn">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/aurang-zaib-0484b6325/"
+                target="_blank" class="btn">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+
+            <a href="mailto:az1790411@gmail.com"
+                class="btn">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-box">
+
+            <p>
+                I am Aurang Zaib, a Computer Science student with strong
+                interest in software development and modern technologies.
+                I have practical experience in C++, Java, Python, SQL,
+                HTML, CSS, Android Studio, GitHub, Arduino and Cisco Packet Tracer.
+
+                I enjoy building creative and real-world projects while improving
+                my communication and presentation skills. I have also served as
+                Class Representative for three semesters which improved my leadership,
+                teamwork and confidence in public speaking.
+            </p>
+
+        </div>
+
+   <!-- SKILLS -->
+
+<section id="skills">
+
+    <h2 class="section-title">Technical Skills</h2>
+
+    <div class="skills-container">
+
+        <div class="skill-card">
+            <i class="fab fa-html5"></i>
+            <span>HTML5</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fab fa-css3-alt"></i>
+            <span>CSS3</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fab fa-js"></i>
+            <span>JavaScript</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fab fa-python"></i>
+            <span>Python</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fas fa-code"></i>
+            <span>C++</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fab fa-java"></i>
+            <span>Java</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fas fa-database"></i>
+            <span>SQL</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fab fa-android"></i>
+            <span>Android Studio</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fas fa-microchip"></i>
+            <span>Arduino</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fas fa-network-wired"></i>
+            <span>Cisco Packet Tracer</span>
+        </div>
+
+        <div class="skill-card">
+            <i class="fas fa-palette"></i>
+            <span>Canva</span>
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- PROJECTS -->
+
+    <!-- PROJECTS -->
+
+<section id="projects">
+
+    <h2 class="section-title">Featured Projects</h2>
+
+    <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+
+        <div class="project-card">
+
+            <div class="project-image project1">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+
+            <div class="project-content">
+
+                <h3>2FA Authentication System</h3>
+
+                <p>
+                    Secure login system using HTML, CSS and JavaScript with OTP verification and user authentication features.
+                </p>
+
+                <a href="https://github.com/aurangzaib0/zaibo-website"
+                    target="_blank">
+                    View Project
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT 2 -->
+
+        <div class="project-card">
+
+            <div class="project-image project2">
+                <i class="fas fa-cookie-bite"></i>
+            </div>
+
+            <div class="project-content">
+
+                <h3>Chocolate Business Website</h3>
+
+                <p>
+                    Modern handmade chocolate business website with responsive design and product showcase.
+                </p>
+
+                <a href="https://zaibofriendchocolate.netlify.app/"
+                    target="_blank">
+                    Live Website
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT 3 -->
+
+        <div class="project-card">
+
+            <div class="project-image project3">
+                <i class="fas fa-robot"></i>
+            </div>
+
+            <div class="project-content">
+
+                <h3>Human Hand Detection Robot</h3>
+
+                <p>
+                    Arduino based robotic system using sensors, motors and hand movement detection.
+                </p>
+
+                <a href="https://www.canva.com/design/DAG8h8ciZh0/RSqeXi7eAAApyBffdxCCnA/view"
+                    target="_blank">
+                    View Presentation
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT 4 -->
+
+        <div class="project-card">
+
+            <div class="project-image project4">
+                <i class="fas fa-network-wired"></i>
+            </div>
+
+            <div class="project-content">
+
+                <h3>University Network Infrastructure</h3>
+
+                <p>
+                    Cisco Packet Tracer based smart university network infrastructure simulation project.
+                </p>
+
+                <a href="https://www.canva.com/design/DAG7IjlA958/B8GO7P8a8YgX5-awvykdcw/view"
+                    target="_blank">
+                    View Presentation
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECT 5 -->
+
+        <div class="project-card">
+
+            <div class="project-image project5">
+                <i class="fas fa-dice"></i>
+            </div>
+
+            <div class="project-content">
+
+                <h3>Dice Rolling Simulator</h3>
+
+                <p>
+                    Python-based dice rolling simulator using loops, conditions and random functions.
+                </p>
+
+                <a href="https://www.canva.com/design/DAG8W30kcNg/Y24w8230-Yq1t_7GYXtgCw/view"
+                    target="_blank">
+                    View Presentation
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- GALLERY -->
+<!-- GALLERY -->
+
+<section id="gallery">
+
+    <h2 class="section-title">Achievements & Events</h2>
+
+    <div class="gallery">
+
+        <div class="gallery-card">
+            <img src="za2.jpeg">
+            <div class="gallery-text">Leadership</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="za3.jpeg">
+            <div class="gallery-text">Presentation Skills</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="za4.jpeg">
+            <div class="gallery-text">University Event</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="za8.jpeg">
+            <div class="gallery-text">Professional Growth</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="za6.jpeg">
+            <div class="gallery-text">Team Work</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="za7.jpeg">
+            <div class="gallery-text">Confidence</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="za9.jpeg">
+            <div class="gallery-text">Achievements</div>
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <h2 class="section-title">Contact Me</h2>
+
+        <p><i class="fas fa-envelope"></i> Email: az1790411@gmail.com</p>
+
+        <p><i class="fas fa-phone"></i> Phone: 03312298149</p>
+
+        <p><i class="fas fa-location-dot"></i> Location: Lahore, Pakistan</p>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Aurang Zaib | All Rights Reserved
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const text = [
+            "Frontend Developer",
+            "Android Developer",
+            "BSCS Student",
+            "Creative Problem Solver"
+        ];
+
+        let i = 0;
+        let j = 0;
+        let current = "";
+        let deleting = false;
+
+        function type() {
+
+            current = text[i];
+
+            if (!deleting) {
+
+                document.getElementById("typing").innerHTML =
+                    current.substring(0, j++);
+
+                if (j > current.length) {
+
+                    deleting = true;
+
+                    setTimeout(type, 1000);
+
+                    return;
+                }
+
+            } else {
+
+                document.getElementById("typing").innerHTML =
+                    current.substring(0, j--);
+
+                if (j == 0) {
+
+                    deleting = false;
+
+                    i = (i + 1) % text.length;
+                }
+            }
+
+            setTimeout(type, deleting ? 50 : 100);
+        }
+
+        type();
+
+    </script>
 
 </body>
+
 </html>
